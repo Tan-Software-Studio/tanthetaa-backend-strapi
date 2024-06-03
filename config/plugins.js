@@ -20,9 +20,16 @@ module.exports = ({ env }) => ({
   },
   upload: {
     config: {
+      provider: 'local', // Specify the provider
       providerOptions: {
         sizeLimit: 268435456, // 256 MB
-        localServer: {},
+        localServer: {
+          maxage: 300000 // 5 minutes caching for example
+        },
+      },
+      actionOptions: {
+        upload: {},
+        delete: {},
       },
     },
   },

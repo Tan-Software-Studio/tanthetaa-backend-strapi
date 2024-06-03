@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "portfolios",
+  "collectionName": "blog_portfolios",
   "info": {
-    "singularName": "portfolio",
-    "pluralName": "portfolios",
-    "displayName": "Portfolio",
+    "singularName": "blog-portfolio",
+    "pluralName": "blog-portfolios",
+    "displayName": "portfolio",
     "description": ""
   },
   "options": {
@@ -15,19 +15,27 @@
     "title": {
       "type": "string"
     },
+    "subtitle": {
+      "type": "string"
+    },
     "description": {
       "type": "text"
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "title"
+    "link": {
+      "type": "string"
     },
-    "tags": {
-      "type": "component",
-      "repeatable": false,
-      "component": "shared.portfolio-tags"
+    "logo": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "files",
+        "videos",
+        "audios",
+        "images"
+      ]
     },
-    "images": {
+    "image": {
       "type": "media",
       "multiple": true,
       "required": false,
@@ -38,15 +46,8 @@
         "audios"
       ]
     },
-    "logo": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
+    "category": {
+      "type": "string"
     }
   }
 }
