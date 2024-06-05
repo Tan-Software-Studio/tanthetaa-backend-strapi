@@ -71,9 +71,9 @@
       "required": true,
       "customField": "plugin::color-picker.color"
     },
-    "blogs": {
+    "blog": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::blog.blog"
     },
     "next": {
