@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "testing_dikens",
+  "info": {
+    "singularName": "testing-diken",
+    "pluralName": "testing-dikens",
+    "displayName": "testing-diken"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dikenz": {
+      "type": "string"
+    }
+  }
+}
