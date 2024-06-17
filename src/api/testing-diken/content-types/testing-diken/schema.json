@@ -4,7 +4,8 @@
   "info": {
     "singularName": "testing-diken",
     "pluralName": "testing-dikens",
-    "displayName": "testing-diken"
+    "displayName": "testing-diken",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -13,6 +14,9 @@
   "attributes": {
     "dikenz": {
       "type": "string"
+    },
+    "email": {
+      "type": "email"
     }
   }
 }
