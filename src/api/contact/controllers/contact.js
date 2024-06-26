@@ -60,10 +60,10 @@ module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
 
         // Send the email with the NDA file attached
         await transporter.sendMail({
-          from: `"Your Company" <${process.env.EMAIL_USER}>`,
+          from: `"Tantheta Software Studio" <${process.env.EMAIL_USER}>`,
           to: email, // Using the email from the request body
-          subject: 'Your NDA Document',
-          text: 'Please find attached the NDA document you requested. from sachin patil',
+          subject: 'NDA Document',
+          text: 'Please find attached the NDA document you requested from submitted form.',
           attachments: [
             {
               filename: 'nda.pdf',
