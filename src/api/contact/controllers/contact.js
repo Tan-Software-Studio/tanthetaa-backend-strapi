@@ -49,7 +49,7 @@ module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
 
         const transporter = nodemailer.createTransport({
             // host: 'smtp.gmail.com', ===>use this when you use real id and password
-            host: 'smtp.ethereal.email',
+            host: 'gmail',
             port: 587,
             auth: {
               user: process.env.EMAIL_USER, // Your Gmail address
