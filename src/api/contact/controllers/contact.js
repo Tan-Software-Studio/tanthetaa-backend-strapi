@@ -1,12 +1,12 @@
-// 'use strict';
+// // 'use strict';
 
-// /**
-//  * contact controller
-//  */
+// // /**
+// //  * contact controller
+// //  */
 
-// const { createCoreController } = require('@strapi/strapi').factories;
+// // const { createCoreController } = require('@strapi/strapi').factories;
 
-// module.exports = createCoreController('api::contact.contact');
+// // module.exports = createCoreController('api::contact.contact');
 
 
 'use strict';
@@ -26,8 +26,8 @@ module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
     const response = await super.create(ctx);
 
     // Extract relevant data from the request
-    const { sendNda, email } = ctx.request.body.data;
-    console.log(sendNda , email);
+    const { sendNda, email, name, projectDescription, budgetRange } = ctx.request.body.data;
+    console.log(sendNda, email, name, projectDescription, budgetRange);
 
     // Check if the NDA checkbox is selected
     if (sendNda) {
@@ -38,32 +38,45 @@ module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
         // Read the NDA file
         const fileContent = fs.readFileSync(filePath);
 
-        // const transporter = nodemailer.createTransport({
-        //     host: 'smtp.ethereal.email',
-        //     port: 587,
-        //     auth: {
-        //         user: 'eloisa5@ethereal.email',
-        //         pass: 'GJs5TuehzR9YwBTtAv'
-        //     }
-        // });
-
         const transporter = nodemailer.createTransport({
-            // host: 'smtp.gmail.com', ===>use this when you use real id and password
-            host: 'gmail',
-            port: 587,
-            auth: {
-              user: process.env.EMAIL_USER, // Your Gmail address
-              pass: process.env.EMAIL_PASS, // Your Gmail password
-            },
-          });
-          
+          host: 'gmail',
+          port: 587,
+          auth: {
+            user: process.env.EMAIL_USER, // Your Gmail address
+            pass: process.env.EMAIL_PASS, // Your Gmail password
+          },
+        });
 
-        // Send the email with the NDA file attached
+        // Send the email with the NDA file attached to yourself
         await transporter.sendMail({
           from: `"Tantheta Software Studio" <${process.env.EMAIL_USER}>`,
-          to: email, // Using the email from the request body
-          subject: 'NDA Document',
-          text: 'Please find attached the NDA document you requested from submitted form.',
+          to: process.env.RECIPIENT_EMAIL,
+          subject: 'NDA Document and User Details',
+          html: `
+            <p>Hello,</p>
+            <p>You have received a new NDA request along with user details. Please find the details below:</p>
+            <h3>User Details:</h3>
+            <table style="border-collapse: collapse; width: 100%;">
+              <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;"><strong>Name:</strong></td>
+                <td style="border: 1px solid #ddd; padding: 8px;">${name}</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;"><strong>Email:</strong></td>
+                <td style="border: 1px solid #ddd; padding: 8px;">${email}</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;"><strong>Project Description:</strong></td>
+                <td style="border: 1px solid #ddd; padding: 8px;">${projectDescription}</td>
+              </tr>
+              <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;"><strong>Budget Range:</strong></td>
+                <td style="border: 1px solid #ddd; padding: 8px;">${budgetRange}</td>
+              </tr>
+            </table>
+            <p>Attached is the NDA document requested by the user.</p>
+            <p>Best regards,<br>Tantheta Software Studio</p>
+          `,
           attachments: [
             {
               filename: 'nda.pdf',
@@ -72,7 +85,7 @@ module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
           ]
         });
 
-        strapi.log.info(`NDA sent to ${email}`);
+        strapi.log.info(`NDA and user details sent to ${process.env.RECIPIENT_EMAIL}`);
       } catch (error) {
         strapi.log.error('Failed to send NDA:', error);
         ctx.throw(500, 'Failed to send NDA');
