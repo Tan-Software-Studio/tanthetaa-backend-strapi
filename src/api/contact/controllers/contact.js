@@ -33,7 +33,7 @@ module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
 
         // Create nodemailer transporter (example with Ethereal)
         const transporter = nodemailer.createTransport({
-          host: 'smtp.ethereal.email',
+          host: 'smtp.gmail.com',
           port: 587,
           auth: {
             user: process.env.EMAIL_USER, // Your Ethereal email address
