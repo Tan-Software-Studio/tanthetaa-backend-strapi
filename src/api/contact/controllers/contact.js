@@ -31,15 +31,15 @@
 //         // Read the NDA file
 //         const ndaFileContent = fs.readFileSync(ndaFilePath);
 
-//         // Create nodemailer transporter (example with Ethereal)
-//         // const transporter = nodemailer.createTransport({
-//         //   host: 'smtp.ethereal.email',
-//         //   port: 587,
-//         //   auth: {
-//         //     user: process.env.EMAIL_USER, // Your Ethereal email address
-//         //     pass: process.env.EMAIL_PASS, // Your Ethereal email password
-//         //   },
-//         // });
+        // Create nodemailer transporter (example with Ethereal)
+        // const transporter = nodemailer.createTransport({
+        //   host: 'smtp.ethereal.email',
+        //   port: 587,
+        //   auth: {
+        //     user: process.env.EMAIL_USER, // Your Ethereal email address
+        //     pass: process.env.EMAIL_PASS, // Your Ethereal email password
+        //   },
+        // });
 //         const transporter = nodemailer.createTransport({
 //           host: 'smtp.ethereal.email',
 //           port: 587,
@@ -162,19 +162,16 @@ module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
       return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
-    function capitalizeFirstChar(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-
     try {
-      // Create nodemailer transporter (example with Ethereal)
+      // Create nodemailer transporter (example with Gmail)
       const transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
+        host: 'smtp.gmail.com',
         port: 587,
+        secure: false, // true for 465, false for other ports
         auth: {
-          user: 'marshall98@ethereal.email',
-          pass: 'UGABStpxKPN7Nfg2s1'
-        }
+          user: process.env.EMAIL_USER, // Your Gmail email address
+          pass: process.env.EMAIL_PASS, // Your Gmail email password
+        },
       });
 
       // Fetch media files from Strapi and construct attachments array
@@ -256,4 +253,5 @@ module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
     return response;
   }
 }));
+
 
