@@ -156,7 +156,7 @@ module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
     // Extract relevant data from the request
     const { email, name, projectDescription, budgetRange, budgetRangeInfo, contactInfo, socialInfo, mediaFiles } = ctx.request.body.data;
     console.log(email, name, projectDescription, budgetRange, budgetRangeInfo, contactInfo, socialInfo, mediaFiles);
-    console.log(ctx.request.body.data);
+    console.log("==>",ctx.request.body.data);
 
     function capitalizeFirstChar(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
