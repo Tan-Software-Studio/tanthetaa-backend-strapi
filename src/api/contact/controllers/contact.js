@@ -165,7 +165,8 @@ module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
     try {
       // Create nodemailer transporter (example with Gmail)
       const transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
+        // host: 'smtp.gmail.com',
+        host: 'smtp.ethereal.email',
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
@@ -232,6 +233,10 @@ module.exports = createCoreController('api::contact.contact', ({ strapi }) => ({
             <tr>
               <td style="border: 1px solid #ddd; padding: 8px;"><strong>Contact Info:</strong></td>
               <td style="border: 1px solid #ddd; padding: 8px;">${contactInfo.contactNumber}</td>
+            </tr>
+              <tr>
+              <td style="border: 1px solid #ddd; padding: 8px;"><strong>Country Name:</strong></td>
+              <td style="border: 1px solid #ddd; padding: 8px;">${contactInfo.countryName}</td>
             </tr>
             <tr>
               <td style="border: 1px solid #ddd; padding: 8px;"><strong>${capitalizeFirstChar(socialInfo.socialName)}:</strong></td>

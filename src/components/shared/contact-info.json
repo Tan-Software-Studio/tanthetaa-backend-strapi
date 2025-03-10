@@ -13,6 +13,10 @@
     },
     "contactNumber": {
       "type": "biginteger"
+    },
+    "countryName": {
+      "type": "string",
+      "required": true
     }
   }
 }

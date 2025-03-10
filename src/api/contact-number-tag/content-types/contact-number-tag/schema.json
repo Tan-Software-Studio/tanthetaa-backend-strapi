@@ -21,17 +21,6 @@
       "type": "string",
       "unique": true,
       "required": true
-    },
-    "countryLogo": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
     }
   }
 }
