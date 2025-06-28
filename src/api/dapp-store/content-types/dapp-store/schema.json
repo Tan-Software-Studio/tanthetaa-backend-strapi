@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dapp_stores",
+  "info": {
+    "singularName": "dapp-store",
+    "pluralName": "dapp-stores",
+    "displayName": "Dapp Store",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "description": {
+      "type": "richtext",
+      "required": true,
+      "minLength": 3,
+      "maxLength": 300
+    },
+    "dapp_tags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dapp-tag.dapp-tag",
+      "mappedBy": "dapp_stores"
+    },
+    "dapp_chains": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dapp-chain.dapp-chain",
+      "mappedBy": "dapp_stores"
+    },
+    "url": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

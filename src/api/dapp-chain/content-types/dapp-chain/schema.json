@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dapp_chains",
+  "info": {
+    "singularName": "dapp-chain",
+    "pluralName": "dapp-chains",
+    "displayName": "DappChain",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "chains": {
+      "type": "text",
+      "required": true,
+      "unique": true
+    },
+    "dapp_stores": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dapp-store.dapp-store",
+      "inversedBy": "dapp_chains"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dapp_tags",
+  "info": {
+    "singularName": "dapp-tag",
+    "pluralName": "dapp-tags",
+    "displayName": "DappTag",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "tags": {
+      "type": "string",
+      "required": true,
+      "unique": true,
+      "minLength": 3,
+      "maxLength": 50
+    },
+    "dapp_stores": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::dapp-store.dapp-store",
+      "inversedBy": "dapp_tags"
+    }
+  }
+}
