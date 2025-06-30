@@ -12,8 +12,8 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "chains": {
-      "type": "text",
+    "Title": {
+      "type": "string",
       "required": true,
       "unique": true
     },

@@ -15,9 +15,7 @@
     "tags": {
       "type": "string",
       "required": true,
-      "unique": true,
-      "minLength": 3,
-      "maxLength": 50
+      "unique": true
     },
     "dapp_stores": {
       "type": "relation",
