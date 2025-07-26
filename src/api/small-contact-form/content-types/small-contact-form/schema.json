@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "small_contact_forms",
+  "info": {
+    "singularName": "small-contact-form",
+    "pluralName": "small-contact-forms",
+    "displayName": "small-contact-form"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "projectDescription": {
+      "type": "string"
+    },
+    "contactInfo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.contact-info"
+    }
+  }
+}
